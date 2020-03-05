@@ -1,0 +1,30 @@
+<main class="container mt-5" role="main">
+    <div class="jumbotron">
+        <p class="lead">Lista de Productos</p>
+        <table class="table mt-5">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col"><a href="/new" class="btn btn-success ml-4"><i class="fa fa-plus-square" aria-hidden="true"></i></a></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @products.each do |producto| %>
+                <tr>
+                    <td><%= producto.name %></td>
+                    <td><%= producto.description %></td>
+                    <td><%= producto.price %></td>
+                    <td>
+                        <%= link_to '<button class="btn btn-warning"><i class="fa fa-pencil-square" aria-hidden="true"></i></button>'.html_safe , edit_product_path(producto) %>
+                        <%= link_to '<button class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>'.html_safe, producto, method: :delete, data: {confirm: "Deseas eliminar este articulo?"} %>
+                    </td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</main>
+ 
+    <br><br>
